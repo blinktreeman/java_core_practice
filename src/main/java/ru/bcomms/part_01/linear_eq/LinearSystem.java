@@ -3,22 +3,20 @@ package ru.bcomms.part_01.linear_eq;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.bcomms.part_01.linear_eq.exceptions.WrongArgsNumException;
 import ru.bcomms.part_01.matrix.Matrix;
 
 public class LinearSystem<T extends Number> {
-    private Matrix systemMatrix = new Matrix();
-    private List<T> freeMembersColumn = new ArrayList<>();
+    private final Matrix<T> systemMatrix = new Matrix<>();
+    private final List<T> freeMembersColumn = new ArrayList<>();
 
-    public boolean addEquation(LinearEquation lEquation) throws ArithmeticException {
-        if (systemMatrix.rows() == 0 ||
-                systemMatrix.columns() == lEquation.coefficients.size()) {
+    public void addEquation(LinearEquation<T> lEquation) throws WrongArgsNumException {
+        if (systemMatrix.rows() == 0 || systemMatrix.columns() == lEquation.coefficients.size()) {
             systemMatrix.addRow(lEquation.coefficients);
             freeMembersColumn.add(lEquation.free_member);
         } else {
-            throw new ArithmeticException(
-                    "The number of coefficients for variables does not correspond to the matrix of the system");
+            throw new WrongArgsNumException();
         }
-        return true;
     }
 
     public String toString() {
