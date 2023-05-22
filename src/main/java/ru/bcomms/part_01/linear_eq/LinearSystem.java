@@ -21,7 +21,8 @@ public class LinearSystem<T extends Number> {
      *          уравнения и иным количеством коэффициентов при переменных
      */
     public void addEquation(LinearEquation<T> lEquation) throws WrongArgsNumException {
-        if (systemMatrix.rows() == 0 || systemMatrix.columns() == lEquation.coefficients.size()) {
+        if (systemMatrix.rows() == 0 ||
+                systemMatrix.columns() == lEquation.coefficients.size()) {
             systemMatrix.addRow(lEquation.coefficients);
             freeMembersColumn.add(lEquation.free_member);
         } else {
