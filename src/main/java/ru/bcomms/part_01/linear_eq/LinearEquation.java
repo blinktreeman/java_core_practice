@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Линейное уравнение
+ */
 public class LinearEquation<T extends Number> {
     protected List<T> coefficients = new ArrayList<>();
     protected T free_member;

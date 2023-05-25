@@ -27,8 +27,7 @@ public class App {
         List<Double> roots = new ArrayList<>();
         try {
             roots = lSystem.getRoots();
-        }
-        catch (UnderDeterminedException e) {
+        } catch (UnderDeterminedException e) {
             System.err.println(e.getMessage());
         }
         for (Double root : roots) {

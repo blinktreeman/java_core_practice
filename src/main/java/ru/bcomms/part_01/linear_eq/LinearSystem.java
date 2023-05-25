@@ -7,10 +7,19 @@ import ru.bcomms.part_01.linear_eq.exceptions.UnderDeterminedException;
 import ru.bcomms.part_01.linear_eq.exceptions.WrongArgsNumException;
 import ru.bcomms.part_01.matrix.Matrix;
 
+/**
+ * Система линейных уравнений
+ */
 public class LinearSystem<T extends Number> {
     private final Matrix<T> systemMatrix = new Matrix<>();
     private final List<T> freeMembersColumn = new ArrayList<>();
 
+    /**
+     * Добавление линейного уравнения в систему
+     * @param lEquation линейное уравнение
+     * @throws WrongArgsNumException исключение при добавлении к системе 
+     *          уравнения и иным количеством коэффициентов при переменных
+     */
     public void addEquation(LinearEquation<T> lEquation) throws WrongArgsNumException {
         if (systemMatrix.rows() == 0 || systemMatrix.columns() == lEquation.coefficients.size()) {
             systemMatrix.addRow(lEquation.coefficients);
